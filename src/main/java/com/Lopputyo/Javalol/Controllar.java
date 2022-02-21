@@ -26,4 +26,13 @@ public class Controllar {
         return this.oppilaat;
     }
 
+    @PostMapping("addKurssit")
+    public String addKurssit(@RequestParam String coursename, @RequestParam String opettaja, @RequestParam String ajankohta, @RequestParam String kurssiID){
+        Kurssit k = new Kurssit(coursename, opettaja,ajankohta,kurssiID);
+        kurssit.add(k);
+        return"Kurssi lisatty";
+    }
+
+    @GetMapping("allKurssit")
+    public List<Kurssit>getKurssit(){ return this.kurssit;}
 }

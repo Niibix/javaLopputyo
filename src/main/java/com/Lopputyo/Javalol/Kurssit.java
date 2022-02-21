@@ -4,11 +4,13 @@ public class Kurssit {
     public String coursename;
     public String opettaja;
     public String ajankohta;
+    public String kurssiID;
 
-    public Kurssit(String coursename, String opettaja, String ajankohta) {
+    public Kurssit(String coursename, String opettaja, String ajankohta, String kurssiID) {
         this.coursename = coursename;
         this.opettaja = opettaja;
         this.ajankohta = ajankohta;
+        this.kurssiID = kurssiID;
     }
 
     public String getCoursename() {
@@ -33,5 +35,13 @@ public class Kurssit {
 
     public void setAjankohta(String ajankohta) {
         this.ajankohta = ajankohta;
+    }
+
+    public String getKurssiID() {
+        return kurssiID;
+    }
+
+    public void setKurssiID(String kurssiID) {
+        this.kurssiID = kurssiID;
     }
 }
