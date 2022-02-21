@@ -15,8 +15,8 @@ public class Controllar {
 
 
     @PostMapping("addOppilaat")
-    public String addOppilaat(@RequestParam String fname, @RequestParam String lname, @RequestParam String address) {
-        Oppilaat o = new Oppilaat(fname,lname, address);
+    public String addOppilaat(@RequestParam String fname, @RequestParam String lname, @RequestParam String address, @RequestParam String opiskelijaID) {
+        Oppilaat o = new Oppilaat(fname,lname, address, opiskelijaID);
         oppilaat.add(o);
         return "Oppilas lisätty";
     }

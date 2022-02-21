@@ -4,12 +4,7 @@ public class Oppilaat {
     public String fname;
     public String lname;
     public String address;
-
-    public Oppilaat(String fname, String lname, String address) {
-        this.fname = fname;
-        this.lname = lname;
-        this.address = address;
-    }
+    public String opiskelijaID;
 
     public String getFname() {
         return fname;
@@ -34,4 +29,22 @@ public class Oppilaat {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String getOpiskelijaID() {
+        return opiskelijaID;
+    }
+
+    public void setOpiskelijaID(String opiskelijaID) {
+        this.opiskelijaID = opiskelijaID;
+    }
+
+    public Oppilaat(String fname, String lname, String address, String opiskelijaID) {
+        this.fname = fname;
+        this.lname = lname;
+        this.address = address;
+        this.opiskelijaID = opiskelijaID;
+
+    }
 }
+
+
