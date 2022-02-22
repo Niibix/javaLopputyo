@@ -25,7 +25,7 @@ public class Controllar {
 //Opiskelija hommat
 
     @PostMapping("addOppilaat")
-    public String addOppilaat(@RequestParam String fname, @RequestParam String lname, @RequestParam String address, @RequestParam String opiskelijaID) throws IOException {
+    public String addOppilaat( @RequestParam String opiskelijaID, @RequestParam String fname, @RequestParam String lname, @RequestParam String address) throws IOException {
         FileWriter fw = new FileWriter(oppilaat, true);
         fw.write(opiskelijaID + " " +fname+ " " + lname + " " + address + System.lineSeparator());
         fw.close();
@@ -34,7 +34,7 @@ public class Controllar {
 
     }
     @GetMapping("studentbyid")
-    public String getOpiskelijaID(@RequestParam String opiskelijaID) throws FileNotFoundException {
+    public String getStudentById(@RequestParam String opiskelijaID) throws FileNotFoundException {
         Scanner reader = new Scanner(oppilaat);
         while (reader.hasNextLine()) {
             String line = reader.nextLine();
