@@ -35,7 +35,7 @@ public class Controllar {
     }
     @GetMapping("studentbyid")
     public String getOpiskelijaID(@RequestParam String opiskelijaID) throws FileNotFoundException {
-        Scanner reader = new Scanner(filu);
+        Scanner reader = new Scanner(oppilaat);
         while (reader.hasNextLine()) {
             String line = reader.nextLine();
             String[] tokens = line.split(" ");
