@@ -6,6 +6,9 @@ public class Oppilaat {
     public String address;
     public String opiskelijaID;
 
+    public static void add(Oppilaat o) {
+    }
+
     public String getFname() {
         return fname;
     }

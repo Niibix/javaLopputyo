@@ -3,20 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin sivu</title>
+
+    <style>
+    body {background-color: black;}
+
+    div {
+    margin-left: 400px;
+    margin-right: 400px;
+
+    }
+
+    h1{
+    background-color: blue;
+    font-size: 40px;
+    }
+    </style>
+
 </head>
 <body>
+
 <h1>Historian paras admin sivu</h1>
+<div>
 <form action = "http://localhost:8080/oppilaat.html">
-    <input type = "submit" value = "Lisää opiskelija">
+    <input type = "submit" value = "Lisää opiskelija" style="border-radius: 25px; background-color: green; font-weight: bold; font-size: 30px; ">
 </form> <br>
 <form action = "http://localhost:8080/allOppilaat">
-    <input type = "submit" value = "Tarkastele opiskelijoita">
+    <input type = "submit" value = "Tarkastele opiskelijoita" style="border-radius: 25px; background-color: green; font-weight: bold; font-size: 30px;">
 </form> <br>
 <form action = "http://localhost:8080/Kurssi.html">
-    <input type = "submit" value = "Lisää kurssi">
+    <input type = "submit" value = "Lisää kurssi" style="border-radius: 25px; background-color: green; font-weight: bold; font-size: 30px;">
 </form><br>
-<form action = "http://localhost:8080/allKurssit">
-    <input type = "submit" value = "Tarkastele kursseja">
+<form action = "http://localhost:8080/kurssiTarkastelu.html">
+    <input type = "submit" value = "Tarkastele kursseja" style="border-radius: 25px; background-color: green; font-weight: bold; font-size: 30px;">
 </form><br>
+</div>
 </body>
 </html>
