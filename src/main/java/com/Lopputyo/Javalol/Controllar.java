@@ -5,6 +5,8 @@ package com.Lopputyo.Javalol;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.io.*;
 import java.util.Scanner;
@@ -15,7 +17,7 @@ import java.util.Scanner;
 public class Controllar {
 
     File filu = new java.io.File("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\DataController");
-
+    File roskis = new java.io.File("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\roskis");
 
     public Controllar() throws FileNotFoundException {
     }
@@ -39,9 +41,9 @@ public class Controllar {
     }
 
     @PostMapping("addKurssit")
-    public String addKurssit(@RequestParam String coursename,  @RequestParam String kurssiID) throws IOException {
+    public String addKurssit(@RequestParam String coursename,  @RequestParam String kurssiID, @RequestParam String opettaja) throws IOException {
         FileWriter fw = new FileWriter(filu, true);
-        fw.write(kurssiID + " " + coursename + System.lineSeparator());
+        fw.write(kurssiID + " " + coursename + " " + opettaja + System.lineSeparator());
         fw.close();
 
         return"Kurssi lisatty";
@@ -83,5 +85,29 @@ public class Controllar {
         return "Antamallasi ID:llä ei löydy kurssia.";
     }
 
+    @GetMapping("coursesbyteacher")
+    public String getCourseByTeacher(@RequestParam String opettaja) throws IOException {
+        Scanner reader = new Scanner(filu);
+        PrintWriter dumpWriter = new PrintWriter(roskis);
+        dumpWriter.print("");
+        while (reader.hasNextLine()) {
+            String line = reader.nextLine();
+            String[] tokens = line.split(" ");
+            System.out.println(tokens[0] + " " + tokens[1] + " " + tokens[2]);
+            if(opettaja.equals(tokens[2])){
+                dumpWriter.print(line + System.lineSeparator());
+                System.out.println(line);
+
+            }
+
+
+        }
+
+        reader.close();
+        dumpWriter.close();
+        String Seppo  = Files.readString(Path.of("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\roskis"));
+        return "<h3>" + Seppo.replaceAll("(\r\n|\r\n|\n\r)", "<br>") + "</h3>";
+
+    }
 }
 

@@ -3,17 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Kurssin lisääminen</title>
+    <style>
+    body {background-color: black;}
+
+    div {
+    margin-left: 400px;
+    margin-right: 400px;
+
+    }
+
+    h1{
+    background-color: blue;
+    font-size: 40px;
+    }
+    </style>
 </head>
 <body>
+<div>
 <form method="post" action="http://localhost:8080/addKurssit">
     <h1>Lisää kurssi</h1>
-    <label>Syötä kurssin nimi:</label><br>
+    <label style="color: blue; font-size:20px;">Syötä kurssin nimi:</label><br>
     <input type="text" name="coursename"><br>
-    <label>Syötä kurssin ID numero:</label><br>
+    <label style="color: blue; font-size:20px;">Syötä kurssin ID numero:</label><br>
     <input type="text" name="kurssiID"><br>
-    <input type="submit" value="Lisaa" >
+    <label style="color: blue; font-size:20px;">Syötä kurssin opettaja:</label><br>
+    <input type="text" name="opettaja"><br>
+    <input type="submit" value="Lisaa" style="border-radius: 25px; background-color: blue; font-weight: bold; font-size: 20px; ">
 
 
 </form>
+</div>
 </body>
 </html>

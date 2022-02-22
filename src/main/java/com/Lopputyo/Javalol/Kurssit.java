@@ -3,9 +3,22 @@ package com.Lopputyo.Javalol;
 public class Kurssit {
     public String coursename;
     public String kurssiID;
+    public String opettaja;
 
     public String getCoursename() {
         return coursename;
+    }
+
+    public Kurssit(String opettaja) {
+        this.opettaja = opettaja;
+    }
+
+    public String getOpettaja() {
+        return opettaja;
+    }
+
+    public void setOpettaja(String opettaja) {
+        this.opettaja = opettaja;
     }
 
     public void setCoursename(String coursename) {
