@@ -23,21 +23,22 @@ public class Controllar {
 //Opiskelija hommat
 
     @PostMapping("addOppilaat")
-    public String addOppilaat( @RequestParam String opiskelijaID, @RequestParam String fname, @RequestParam String lname, @RequestParam String address) throws IOException {
+    public String addOppilaat(@RequestParam String opiskelijaID, @RequestParam String fname, @RequestParam String lname, @RequestParam String address) throws IOException {
         FileWriter fw = new FileWriter(oppilaat, true);
-        fw.write(opiskelijaID + " " +fname+ " " + lname + " " + address + System.lineSeparator());
+        fw.write(opiskelijaID + " " + fname + " " + lname + " " + address + System.lineSeparator());
         fw.close();
         return "Opiskelija lisätty";
 
 
     }
+
     @GetMapping("studentbyid")
     public String getStudentById(@RequestParam String opiskelijaID) throws FileNotFoundException {
         Scanner reader = new Scanner(oppilaat);
         while (reader.hasNextLine()) {
             String line = reader.nextLine();
             String[] tokens = line.split(" ");
-            if(opiskelijaID.equals(tokens[0])){
+            if (opiskelijaID.equals(tokens[0])) {
                 System.out.println(line);
                 reader.close();
                 return "<h3>" + line + "</h3>";
@@ -52,12 +53,12 @@ public class Controllar {
     //Kurssi hommat
 
     @PostMapping("addKurssit")
-    public String addKurssit(@RequestParam String coursename,  @RequestParam String kurssiID, @RequestParam String opettaja) throws IOException {
+    public String addKurssit(@RequestParam String coursename, @RequestParam String kurssiID, @RequestParam String opettaja) throws IOException {
         FileWriter fw = new FileWriter(filu, true);
         fw.write(kurssiID + " " + coursename + " " + opettaja + System.lineSeparator());
         fw.close();
 
-        return"Kurssi lisatty";
+        return "Kurssi lisatty";
     }
 
     @GetMapping("coursesbyname")
@@ -67,7 +68,7 @@ public class Controllar {
             String line = reader.nextLine();
             String[] tokens = line.split(" ");
             System.out.println(tokens[0] + " " + tokens[1]);
-            if(coursename.equals(tokens[1])){
+            if (coursename.equals(tokens[1])) {
                 System.out.println(line);
                 reader.close();
                 return "<h3>" + line + "</h3>";
@@ -85,10 +86,11 @@ public class Controllar {
             String line = reader.nextLine();
             String[] tokens = line.split(" ");
             System.out.println(tokens[0] + " " + tokens[1]);
-            if(kurssiID.equals(tokens[0])){
+            if (kurssiID.equals(tokens[0])) {
                 System.out.println(line);
                 reader.close();
-                return "<h3>" + line + "</h3>";
+                String Seppo = "<form method='POST' action = 'http://localhost:8080/lisaaOppilas'><label>Lisää itsesi kurssille:</label><br><input type='text' name='kurssiID'><br><input type = 'submit' value = 'Hae'></form>";
+                return "<h3>" + line + "</h3>" + Seppo;
             }
 
         }
@@ -104,10 +106,10 @@ public class Controllar {
         while (reader.hasNextLine()) {
             String line = reader.nextLine();
             String[] tokens = line.split(" ");
-            if(opettaja.equals(tokens[2] + " " + tokens[3])){
+            if (opettaja.equals(tokens[2] + " " + tokens[3])) {
                 dumpWriter.print(line + System.lineSeparator());
                 System.out.println(line);
-            }else if(opettaja.equals(tokens[2])) {
+            } else if (opettaja.equals(tokens[2])) {
                 dumpWriter.print(line + System.lineSeparator());
                 System.out.println(line);
             } else if (opettaja.equals(tokens[3])) {
@@ -120,12 +122,34 @@ public class Controllar {
 
         reader.close();
         dumpWriter.close();
-        String Seppo  = Files.readString(Path.of("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\roskis"));
-        if(Seppo.equals("")){
+        String Seppo = Files.readString(Path.of("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\roskis"));
+        if (Seppo.equals("")) {
             return "Väärin meni senkin klovni";
-        }else {
+        } else {
             return "<h3>" + Seppo.replaceAll("(\r\n|\r\n|\n\r)", "<br>") + "</h3>";
         }
+
+    }
+
+    @PostMapping("lisaaOppilas")
+    public String lisaaOppilas(@RequestParam String opiskelijaID) throws FileNotFoundException {
+        Scanner reader = new Scanner(oppilaat);
+        while (reader.hasNextLine()) {
+            String line = reader.nextLine();
+            String[] tokens = line.split(" ");
+            if (opiskelijaID.equals(tokens[0])) {
+                System.out.println(line);
+                reader.close();
+                return "<h3>" + line + "</h3>";
+            }
+        }
+        reader.close();
+        return "Lol.";
     }
 }
+
+
+
+
+
 
