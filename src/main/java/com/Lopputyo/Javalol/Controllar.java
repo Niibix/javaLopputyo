@@ -19,8 +19,6 @@ public class Controllar {
     File filu = new java.io.File("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\DataController");
     File roskis = new java.io.File("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\roskis");
     File oppilaat = new java.io.File("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\Oppilaat");
-    public Controllar() throws FileNotFoundException {
-    }
 
 //Opiskelija hommat
 
@@ -39,7 +37,6 @@ public class Controllar {
         while (reader.hasNextLine()) {
             String line = reader.nextLine();
             String[] tokens = line.split(" ");
-            System.out.println(tokens[0] + " " + tokens[1]);
             if(opiskelijaID.equals(tokens[0])){
                 System.out.println(line);
                 reader.close();
@@ -107,11 +104,15 @@ public class Controllar {
         while (reader.hasNextLine()) {
             String line = reader.nextLine();
             String[] tokens = line.split(" ");
-            System.out.println(tokens[0] + " " + tokens[1] + " " + tokens[2]);
-            if(opettaja.equals(tokens[2])){
+            if(opettaja.equals(tokens[2] + " " + tokens[3])){
                 dumpWriter.print(line + System.lineSeparator());
                 System.out.println(line);
-
+            }else if(opettaja.equals(tokens[2])) {
+                dumpWriter.print(line + System.lineSeparator());
+                System.out.println(line);
+            } else if (opettaja.equals(tokens[3])) {
+                dumpWriter.print(line + System.lineSeparator());
+                System.out.println(line);
             }
 
 

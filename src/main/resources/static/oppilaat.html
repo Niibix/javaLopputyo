@@ -3,21 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Opiskelija lisäys</title>
+    <style>
+    body {background-color: black;}
+
+    div {
+    margin-left: 400px;
+    margin-right: 400px;
+
+    }
+
+    h1{
+    background-color: blue;
+    font-size: 40px;
+    }
+    </style>
 </head>
 <body>
 
 <form method="post" action="http://localhost:8080/addOppilaat">
+    <div>
     <h1>Lisää itsesi opillas tietokantaan</h1>
-    <label>Anna etunimesi:</label><br>
+    <label style="color: blue; font-size:20px;">Anna etunimesi:</label><br>
     <input type="text" name="fname"><br>
-    <label>Anna sukunimesi:</label><br>
+    <label style="color: blue; font-size:20px;">Anna sukunimesi:</label><br>
     <input type="text" name="lname"><br>
-    <label>Anna osoitteesi:</label><br>
+    <label style="color: blue; font-size:20px;">Anna osoitteesi:</label><br>
     <input type="text" name="address"><br>
-    <label>Luo itesellesi opiskelija numero:</label><br>
+    <label style="color: blue; font-size:20px;">Luo itesellesi opiskelija numero:</label><br>
     <input type="text" name="opiskelijaID"><br>
-    <input type="submit" value="Lisaa" >
-
+    <input type="submit" value="Lisaa" style="border-radius: 25px; background-color: blue; font-weight: bold; font-size: 20px; ">
+    </div>
 
 </form>
 
