@@ -19,11 +19,11 @@ public class Controllar {
     File filu = new java.io.File("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\DataController");
     File roskis = new java.io.File("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\roskis");
     File oppilaat = new java.io.File("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\Oppilaat");
-
+    File Yolo   = new java.io.File("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\Yolo");
 //Opiskelija hommat
 
-    @PostMapping("addOppilaat")
-    public String addOppilaat(@RequestParam String opiskelijaID, @RequestParam String fname, @RequestParam String lname, @RequestParam String address) throws IOException {
+    @PostMapping("addstudent")
+    public String addStudent(@RequestParam String opiskelijaID, @RequestParam String fname, @RequestParam String lname, @RequestParam String address) throws IOException {
         FileWriter fw = new FileWriter(oppilaat, true);
         fw.write(opiskelijaID + " " + fname + " " + lname + " " + address + System.lineSeparator());
         fw.close();
@@ -52,8 +52,8 @@ public class Controllar {
 
     //Kurssi hommat
 
-    @PostMapping("addKurssit")
-    public String addKurssit(@RequestParam String coursename, @RequestParam String kurssiID, @RequestParam String opettaja) throws IOException {
+    @PostMapping("addcourse")
+    public String addcourse(@RequestParam String coursename, @RequestParam String kurssiID, @RequestParam String opettaja) throws IOException {
         FileWriter fw = new FileWriter(filu, true);
         fw.write(kurssiID + " " + coursename + " " + opettaja + System.lineSeparator());
         fw.close();
@@ -130,20 +130,39 @@ public class Controllar {
         }
 
     }
-
-    @PostMapping("lisaaOppilas")
-    public String lisaaOppilas(@RequestParam String opiskelijaID) throws FileNotFoundException {
-        Scanner reader = new Scanner(oppilaat);
-        while (reader.hasNextLine()) {
-            String line = reader.nextLine();
+    @GetMapping("allcourses")
+    public String getAllCourses() throws IOException {
+        String contentToShow = Files.readString(Path.of("C:\\Users\\Niko Pc\\Desktop\\Javalol\\src\\main\\java\\com\\Lopputyo\\Javalol\\DataController"));
+        if(contentToShow.equals("")){
+            return "There are no courses inserted in the system. You can add a course first to see if the application works.";
+        }else {
+            return "<h3> " + contentToShow.replaceAll("(\r\n|\r|\n|\n\r)", "<br>") + "</h3>";
+        }
+    }
+    @PostMapping("addstudenttocourse")
+    public String addstudenttocourse(@RequestParam String opiskelijaID, @RequestParam String kurssiID) throws IOException {
+        Scanner oppilas = new Scanner(oppilaat);
+        Scanner kurssi = new Scanner (filu);
+        while (oppilas.hasNextLine()) {
+            String line = oppilas.nextLine();
+            String bline = kurssi.nextLine();
             String[] tokens = line.split(" ");
-            if (opiskelijaID.equals(tokens[0])) {
+            String[] btokens = line.split(" ");
+             if (opiskelijaID.equals(tokens[0])) {
                 System.out.println(line);
-                reader.close();
-                return "<h3>" + line + "</h3>";
+                if(kurssiID.equals(btokens[0])){
+                    System.out.println(bline);
+                }
+                oppilas.close();
+                kurssi.close();
+                String Penus = line + bline;
+                FileWriter fw = new FileWriter(Yolo, true);
+                fw.write(line + " " + bline + System.lineSeparator());
+                fw.close();
+                return "<h3>" + line + " lisätty kurssille" + bline + "</h3>";
             }
         }
-        reader.close();
+        oppilas.close();
         return "Lol.";
     }
 }
