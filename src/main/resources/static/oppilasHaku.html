@@ -3,12 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Hae oppilaita </title>
+
+    <style>
+    body {background-color: black;}
+
+    div {
+    margin-left: 400px;
+    margin-right: 400px;
+
+    }
+
+    h1{
+    background-color: blue;
+    font-size: 40px;
+    }
+    </style>
 </head>
 <body>
 <form method="get" action = "http://localhost:8080/studentbyid">
-    <label>Etsi opiskelijaa ID:n mukaan :</label><br>
+    <label  style="color: blue; font-size:20px;">Etsi opiskelijaa ID:n mukaan :</label><br>
     <input type="text" name="opiskelijaID"><br>
-    <input type = "submit" value = "Hae">
+    <input type = "submit" value = "Hae" style="border-radius: 25px; background-color: blue; font-weight: bold; font-size: 20px; ">
 </form>
 </body>
 </html>

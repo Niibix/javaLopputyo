@@ -3,29 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Kurssi haku</title>
+    <style>
+    body {background-color: black;}
+
+    div {
+    margin-left: 400px;
+    margin-right: 400px;
+
+    }
+
+    h1{
+    background-color: blue;
+    font-size: 40px;
+    }
+    </style>
+
 </head>
 <body>
+<div>
+    <h1>Etsi kurssi</h1>
 <form action = "http://localhost:8080/coursesbyname">
-<label>Etsi kurssin nimellä:</label><br>
+<label style="color: blue; font-size:20px;">Etsi kurssin nimellä:</label><br>
 <input type="text" name="coursename"><br>
-  <input type = "submit" value = "Hae">
+  <input type = "submit" value = "Hae"  style="border-radius: 25px; background-color: blue; font-weight: bold; font-size: 20px; ">
 </form>
 
 <form action = "http://localhost:8080/coursesbyid">
-  <label>Etsi kurssia ID-numerolla:</label><br>
+  <label style="color: blue; font-size:20px;">Etsi kurssia ID-numerolla:</label><br>
   <input type="text" name="kurssiID"><br>
-  <input type = "submit" value = "Hae">
+  <input type = "submit" value = "Hae"  style="border-radius: 25px; background-color: blue; font-weight: bold; font-size: 20px; ">
 </form>
 
 <form action = "http://localhost:8080/coursesbyteacher">
-    <label>Etsi kurssia opettajan nimella:</label><br>
+    <label style="color: blue; font-size:20px;">Etsi kurssia opettajan nimella:</label><br>
     <input type="text" name="opettaja"><br>
-    <input type = "submit" value = "Hae">
+    <input type = "submit" value = "Hae"  style="border-radius: 25px; background-color: blue; font-weight: bold; font-size: 20px; ">
 </form>
 
 <form action = "http://localhost:8080/allcourses">
-    <label>Näytä kaikki kurssit:</label><br>
-    <input type = "submit" value = "Hae">
+    <label style="color: blue; font-size:20px;">Näytä kaikki kurssit:</label><br>
+    <input type = "submit" value = "Hae"  style="border-radius: 25px; background-color: blue; font-weight: bold; font-size: 20px; ">
 </form>
+</div>
 </body>
 </html>
