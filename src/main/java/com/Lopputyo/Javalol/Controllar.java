@@ -5,9 +5,7 @@ package com.Lopputyo.Javalol;
 import org.springframework.web.bind.annotation.*;
 
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -84,7 +82,7 @@ public class Controllar {
                 FileWriter fw = new FileWriter(studentoncourse, true);
                 fw.write(line + " " + bline + System.lineSeparator());
                 fw.close();
-                return "<h3>" + line + " lisätty kurssille" + bline + "</h3>";
+                return "<h3>" + line+ "<br>" + " lisätty kurssille" + "<br>" + bline + "</h3>";
             }
         }
         oppilas.close();

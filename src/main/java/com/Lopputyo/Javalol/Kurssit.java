@@ -69,8 +69,9 @@ public class Kurssit {
             if (kurssiID.equals(tokens[0])) {
                 System.out.println(line);
                 reader.close();
-                String Seppo = "<form method='POST' action = 'http://localhost:8080/addstudent'><label>Lisää itsesi kurssille:</label><br><input type='text' name='kurssiID'><br><input type = 'submit' value = 'Lisää'></form>";
-                return "<h3>" + line + "</h3>" + Seppo;
+                String Seppo =  "<form method='POST' action='http://localhost:8080/addstudenttocourse'><label>Course ID:</label><br><input type='text' name='kurssiID' value=" + tokens[0] + "><br><label>Student ID:</label><br><input type='text' name='opiskelijaID'><br><input type='submit' value='Submit'></form>";
+
+                return line + Seppo;
             }
 
         }
