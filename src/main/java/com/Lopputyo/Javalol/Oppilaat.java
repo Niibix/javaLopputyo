@@ -15,48 +15,6 @@ public class Oppilaat {
 
     public Oppilaat() {
 
-    }
-
-    public static void add(Oppilaat o) {
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getOpiskelijaID() {
-        return opiskelijaID;
-    }
-
-    public void setOpiskelijaID(String opiskelijaID) {
-        this.opiskelijaID = opiskelijaID;
-    }
-
-    public Oppilaat(String fname, String lname, String address, String opiskelijaID) {
-        this.fname = fname;
-        this.lname = lname;
-        this.address = address;
-        this.opiskelijaID = opiskelijaID;
 
     }
     public String addStudent(String opiskelijaID, String fname, String lname, String address, File Mies) throws IOException {

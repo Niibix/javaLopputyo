@@ -8,47 +8,9 @@ import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Kurssit {
-    public String coursename;
-    public String kurssiID;
-    public String opettaja;
 
-    public Kurssit() {
+    public Kurssit() {}
 
-    }
-
-    public String getCoursename(String coursename, File kurssi) {
-        return this.coursename;
-    }
-
-    public Kurssit(String opettaja) {
-        this.opettaja = opettaja;
-    }
-
-    public String getOpettaja() {
-        return opettaja;
-    }
-
-    public void setOpettaja(String opettaja) {
-        this.opettaja = opettaja;
-    }
-
-    public void setCoursename(String coursename) {
-        this.coursename = coursename;
-    }
-
-    public String getKurssiID() {
-        return kurssiID;
-    }
-
-    public void setKurssiID(String kurssiID) {
-        this.kurssiID = kurssiID;
-    }
-
-    public Kurssit(String coursename, String kurssiID) {
-        this.coursename = coursename;
-        this.kurssiID = kurssiID;
-
-    }
 
     public String getAllCourses() throws IOException {
         String contentToShow = Files.readString(Path.of("DataController"));
@@ -69,7 +31,7 @@ public class Kurssit {
             if (kurssiID.equals(tokens[0])) {
                 System.out.println(line);
                 reader.close();
-                String Seppo =  "<form method='POST' action='http://localhost:8080/addstudenttocourse'><label>Course ID:</label><br><input type='text' name='kurssiID' value=" + tokens[0] + "><br><label>Student ID:</label><br><input type='text' name='opiskelijaID'><br><input type='submit' value='Submit'></form>";
+                String Seppo =  "<form method='POST' action='http://localhost:8080/addstudenttocourse'><label>Course ID:</label><br><input type='text' name='kurssiID' value=" + tokens[0] + "><br><label>Student ID:</label><br><input type='text' name='opiskelijaID'><br><input type='submit' value='Submit' style='border-radius: 25px; background-color: blue; font-weight: bold; font-size: 20px';></form>";
 
                 return line + Seppo;
             }
